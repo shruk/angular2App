@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list.component';
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
+import { StarComponnent } from './shared/star.component';
 
 @NgModule({
   declarations: [//think declaration as more of relation between module and components etc.
     AppComponent,
     ProductListComponent,
-    ConvertToSpacesPipe
+    ConvertToSpacesPipe,
+    StarComponnent
   ],
   imports: [ //imports as more of reference between modules
     BrowserModule,
