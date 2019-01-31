@@ -12,9 +12,29 @@ export class ProductListComponent
     imageWidth:number=50;
     imageMargin:number=2;
     showImage:boolean=false;
-    listFilter:string='cart';
+    //update listFilter to a getter/setter
+    //two way binding will use getter and setter automatically
+    //so the best way is to use logic in setter to change value
+    _listFilter:string;
+    get listFilter():string{
+        return this._listFilter;
+    }
+
+    set listFilter(value:string){
+        this._listFilter=value;
+        this.filteredProducts=this.listFilter?this.filtering(this.listFilter):this.products;
+    }
+
+    filteredProducts:IProduct[];
+
+    filtering(filter:string):IProduct[]{
+        filter=filter.toLocaleLowerCase();
+return this.products.filter((product:IProduct)=>
+    product.productName.toLocaleLowerCase().indexOf(filter)!=-1);
+
+    }
 //need to populate some product infomation.
-products:IProduct[]=[
+products:IProduct[]=[ 
     {
       "productId": 1,
       "productName": "Leaf Rake",
@@ -67,11 +87,18 @@ products:IProduct[]=[
     }
   ];
   
+
+constructor(){
+    this.filteredProducts=this.products;
+    this.listFilter='cart';
+}
+
     toggleImage():void{
         this.showImage=!this.showImage;
     }
 
     ngOnInit():void{
         console.log("lifecycle oninit fired!");
+        
     }
 }
