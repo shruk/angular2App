@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+//custom pipe decorator
 @Pipe({
     name: 'convertToSpaces'
 })
