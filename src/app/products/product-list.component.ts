@@ -34,7 +34,7 @@ return this.products.filter((product:IProduct)=>
 
     }
 //need to populate some product infomation.
-products:IProduct[]=[ 
+products:IProduct[]=[
     {
       "productId": 1,
       "productName": "Leaf Rake",
@@ -86,7 +86,7 @@ products:IProduct[]=[
       "imageUrl": "https://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
     }
   ];
-  
+
 
 constructor(){
     this.filteredProducts=this.products;
@@ -96,9 +96,9 @@ constructor(){
     toggleImage():void{
         this.showImage=!this.showImage;
     }
-
+//lifecycle hooks interface imple
     ngOnInit():void{
         console.log("lifecycle oninit fired!");
-        
+
     }
 }
