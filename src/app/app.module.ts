@@ -10,6 +10,7 @@ import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { StarComponnent } from './shared/star.component';
 import { ProductDetailComponent } from './products/product-detail.component';
 import { WelcomeComponent } from './home/welcome.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [//think declaration as more of relation between module and components etc.
@@ -23,6 +24,14 @@ import { WelcomeComponent } from './home/welcome.component';
   imports: [ //imports as more of reference between modules
     BrowserModule,
     AppRoutingModule,
+    RouterModule.forRoot([//routes configuration,first match wins
+      {path: 'products', component:ProductListComponent},
+      {path: 'products/:id', component:ProductDetailComponent},
+      {path: 'welcome', component:WelcomeComponent},
+      {path: '', component:WelcomeComponent,pathMatch:'full'},
+      {path: '**', component:WelcomeComponent,pathMatch:'full'}
+
+    ]),
     FormsModule,
     HttpClientModule
   ],
