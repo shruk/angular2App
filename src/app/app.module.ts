@@ -11,6 +11,7 @@ import { StarComponnent } from './shared/star.component';
 import { ProductDetailComponent } from './products/product-detail.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { RouterModule } from '@angular/router';
+import { ProductDetailGuard } from './products/product-detail.guard';
 
 @NgModule({
   declarations: [//think declaration as more of relation between module and components etc.
@@ -26,7 +27,7 @@ import { RouterModule } from '@angular/router';
     AppRoutingModule,
     RouterModule.forRoot([//routes configuration,first match wins
       {path: 'products', component:ProductListComponent},
-      {path: 'products/:id', component:ProductDetailComponent},
+      {path: 'products/:id', canActivate:[ProductDetailGuard], component:ProductDetailComponent},
       {path: 'welcome', component:WelcomeComponent},
       {path: '', component:WelcomeComponent,pathMatch:'full'},
       {path: '**', component:WelcomeComponent,pathMatch:'full'}
