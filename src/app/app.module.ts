@@ -8,11 +8,13 @@ import { RouterModule } from '@angular/router';
 import { ProductModule } from './products/product.module';
 
 @NgModule({
-  declarations: [//think declaration as more of relation between module and components etc.
+  declarations: [// Components,directives and pipes that belong to this NgModule
     AppComponent,
     WelcomeComponent
-  ],//imports external module
-  imports: [ //imports as more of reference between modules
+  ],
+  exports:[], // Subset of declarations that visible and usable component templates of other NgModules.
+  imports: [ //imports external Module, as more of reference between modules, these modules exported classes are needed by component templates declared in this NgModules.
+    // Tell Angular what other NgModules the current module needs. Here are all NgModules
     BrowserModule,
     RouterModule.forRoot([//routes configuration,first match wins
       {path: 'welcome', component:WelcomeComponent},
@@ -23,6 +25,6 @@ import { ProductModule } from './products/product.module';
     ProductModule //this is our feature module
   ],
   providers: [],
-  bootstrap: [AppComponent] //identify root module
+  bootstrap: [AppComponent] // Identify root component, Angular will insert into index.html host web page.
 })
 export class AppModule { }
