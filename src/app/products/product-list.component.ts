@@ -13,6 +13,9 @@ export class ProductListComponent
     imageMargin:number=2;
     showImage:boolean=false;
     errorMessage:string;
+    filteredProducts:IProduct[];
+    //need to populate some product infomation.
+    products:IProduct[]=[];
     //update listFilter to a getter/setter
     //two way binding will use getter and setter automatically
     //so the best way is to use logic in setter to change value
@@ -26,21 +29,19 @@ export class ProductListComponent
         this.filteredProducts=this.listFilter?this.filtering(this.listFilter):this.products;
     }
 
-    filteredProducts:IProduct[];
-
-    filtering(filter:string):IProduct[]{
-        filter=filter.toLocaleLowerCase();
-return this.products.filter((product:IProduct)=>
-    product.productName.toLocaleLowerCase().indexOf(filter)!=-1);
+    //inject service instance to component in constructor
+    constructor(private productService:ProductService){
 
     }
-//need to populate some product infomation.
-products:IProduct[]=[];
 
-//inject service instance to component in constructor
-constructor(private productService:ProductService){
+    filtering(filter:string):IProduct[]
+    {
+        filter=filter.toLocaleLowerCase();
+        return this.products.filter((product:IProduct)=>
+        product.productName.toLocaleLowerCase().indexOf(filter)!=-1);
 
-}
+    }
+
   //triggered from component view.
     toggleImage():void{
         this.showImage=!this.showImage;
@@ -55,9 +56,7 @@ constructor(private productService:ProductService){
           },
           error=>this.errorMessage=<any>error
         );
-
-
-    }
+      }
 
     onNotify(message:string):void{
       this.pageTitle=this.pageTitle +' '+ message;
