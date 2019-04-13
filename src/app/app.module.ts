@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { RouterModule } from '@angular/router';
 import { ProductModule } from './products/product.module';
+import { BioComponent } from './bio/bio.component';
+import { BioModule } from './bio/bio.module';
 
 @NgModule({
   declarations: [// Components,directives and pipes that belong to this NgModule
@@ -22,6 +24,7 @@ import { ProductModule } from './products/product.module';
       {path: '**', component:WelcomeComponent,pathMatch:'full'}
     ]),
     HttpClientModule,
+    BioModule,
     ProductModule //this is our feature module
   ],
   providers: [],
