@@ -5,7 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { ConvertToSpacesPipe } from './convert-to-spaces.pipe';
 
 @NgModule({
-  declarations: [
+  /* Decalrations section decalre what component/pipe/directive belongs to current NgModule
+  */
+  declarations: [ 
     StarComponnent,
     ConvertToSpacesPipe
   ],
